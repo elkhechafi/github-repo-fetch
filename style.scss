@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+$bg: #eedfcc;
+$text: #777;
+$black: #121212;
+$white: #fff;
+$red: #e04f62;
+$border: #ebebeb;
+$shadow: rgba(0, 0, 0, 0.2);
+
+@mixin transition($args...) {
+  transition: $args;
+}
+
+* {
+  box-sizing: border-box;
+  &::before, &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: $text;
+  background: $bg;
+  font-size: 0.9375rem;
+  min-height: 100vh;
+  margin: 0;
+  line-height: 1.6;
+  align-items: center;
+  justify-content: center;
+  text-rendering: optimizeLegibility;
+  position: relative;
+}
+
+#container {
+  width: 90%;
+  height: 100%;
+  margin-bottom: 4vh;
+}
+
+.repo-card {
+  display: flex;
+  flex-direction: row;
+  background: $white;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  width: 90%;
+  margin: 1vh 0;
+  &:hover .post-title {
+    @include transition(color 0.3s ease);
+    color: $red;
+  }
+  &:hover .post-image {
+    @include transition(opacity 0.3s ease);
+    opacity: 0.9;
+  }
+  .post-image {
+    @include transition(opacity 0.3s ease);
+    display: block;
+    width: 100%;
+      object-fit: cover;
+  }
+  
+  .repo-details {
+    padding: 1.5rem;
+  }
+  
+  .post-title {
+    @include transition(color 0.3s ease);
+    font-size: 1.125rem;
+    line-height: 1.4;
+    color: $black;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    border-bottom: 0.125rem solid $border;
+  }
+
+  .footer{
+      display: inline-flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+  }
+}
+
+
+
+// .post-category {
+//   display: inline-block;
+//   text-transform: uppercase;
+//   font-size: 0.75rem;
+//   font-weight: 700;
+//   line-height: 1;
+//   letter-spacing: 0.0625rem;
+//   margin: 0 0 0.75rem 0;
+//   padding: 0 0 0.25rem 0;
+// }
+
+
+
+#bars {
+    display: none;
+    position: fixed;
+    bottom: 1vh;
+    left: 0%;
+    width: 40%;
+    margin-left: 50%;
+    .bar {
+        background: #f7f7f7;
+         bottom: 1px;
+         height: 3px;
+         position: absolute;
+         width: 3px;      
+         animation: sound 0ms -800ms linear infinite alternate;
+         &:nth-child(1)  { left: 1px; animation-duration: 474ms; }
+         &:nth-child(2)  { left: 5px; animation-duration: 433ms; }
+         &:nth-child(3)  { left: 9px; animation-duration: 407ms; }
+         &:nth-child(4)  { left: 13px; animation-duration: 458ms; }
+         &:nth-child(5)  { left: 17px; animation-duration: 400ms; }
+     }
+}
+
+@keyframes sound {
+    0% {
+       opacity: .35;
+        height: 3px; 
+    }
+    100% {
+        opacity: 1;       
+        height: 28px;        
+    }
+}
+
+.post-author {
+  font-size: 0.875rem;
+  line-height: 1;
+  margin: 1.125rem 0 0 0;
+  padding: 1.125rem 0 0 0;
+  border-top: 0.0625rem solid $border;
+}
+
+@media (max-width: 40rem) {
+  #container {
+    width: 70%;
+    height: 27vh;
+  }
+  
+  .repo-card {
+    flex-wrap: wrap;
+  }
+}
+
+@supports (display: grid) {
+  body {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0.625rem;
+    grid-template-areas: ". main main ." ". main main .";
+  }
+  
+  #container {
+    grid-area: main;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .post-image {
+    height: 100%;
+
+  }
+  
+  .repo-card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    width: 80%;
+    margin-left: 10%;
+    height: max-content;
+    .post-image{
+        height: 100%!important;
+        max-height: 27vh;
+    }
+  }
+  
+  @media (max-width: 40rem) {
+    .repo-card {
+      grid-template-columns: auto;
+      grid-template-rows: 12rem 1fr;
+    }
+  }
+}
