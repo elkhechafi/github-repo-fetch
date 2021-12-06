@@ -38,7 +38,7 @@ body {
 #container {
   width: 90%;
   height: 100%;
-  margin-bottom: 4vh;
+  margin: 4vh 0%;
 }
 
 .repo-card {
@@ -190,6 +190,10 @@ body {
     .repo-card {
       grid-template-columns: auto;
       grid-template-rows: 12rem 1fr;
+      .footer{
+        display: inline-flex;
+        flex-direction: column;
+      }
     }
   }
 }

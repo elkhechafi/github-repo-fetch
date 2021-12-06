@@ -34,7 +34,7 @@ body {
 #container {
   width: 90%;
   height: 100%;
-  margin-bottom: 4vh;
+  margin: 4vh 0%;
 }
 
 .repo-card {
@@ -241,6 +241,15 @@ body {
       -ms-grid-rows: 12rem 1fr;
           grid-template-rows: 12rem 1fr;
     }
+    .repo-card .footer {
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+    }
   }
 }
-/*# sourceMappingURL=style1.css.map */
+/*# sourceMappingURL=style.css.map */
